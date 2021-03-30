@@ -34,15 +34,14 @@ class FBController extends Controller
 
     public function facebookRedirect()
     {
-        $user = Socialite::driver('facebook')->user();
-        dd($user);
-        // return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')->redirect();
     }
 
     public function loginWithFacebook()
     {
         $user = Socialite::driver('facebook')->user();
-        dd($user);
+        $isUser = User::where('fb_id', $user->id)->first();
+        dd($isUser->all());
         // try {
     
         //     $user = Socialite::driver('facebook')->user();
