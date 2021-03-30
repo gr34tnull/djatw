@@ -34,14 +34,14 @@ class FBController extends Controller
 
     public function facebookRedirect()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')->stateless()->redirect();
     }
 
     public function loginWithFacebook()
     {
         try {
     
-            $user = Socialite::driver('facebook')->user();
+            $user = Socialite::driver('facebook')->stateless()->user();
             $isUser = User::where('fb_id', $user->id)->first();
      
             if($isUser){
@@ -71,7 +71,7 @@ class FBController extends Controller
      */
     public function disconnect()
     {
-        $user = Socialite::driver('facebook')->user();
+        $user = Socialite::driver('facebook')->stateless()->user();
         User::where('fb_id', $user->id)->delete();
         return redirect('/');
     }
