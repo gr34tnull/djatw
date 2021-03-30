@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
-use Laravel\Socialite\Facades\Socialite;
+use Socialite;
 use Validator;
 use Exception;
 use Auth;
@@ -39,29 +39,30 @@ class FBController extends Controller
 
     public function loginWithFacebook()
     {
-        try {
+        $user = Socialite::driver('facebook')->user();
+        dd($user);
+        // try {
     
-            $user = Socialite::driver('facebook')->user();
-            $isUser = User::where('fb_id', $user->id)->first();
+        //     $user = Socialite::driver('facebook')->user();
+        //     $isUser = User::where('fb_id', $user->id)->first();
      
-            if($isUser){
-                Auth::login($isUser);
-                return redirect('/dashboard');
-            }else{
-                $createUser = User::create([
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'fb_id' => $user->id,
-                    'password' => encrypt('admin@123')
-                ]);
+        //     if($isUser){
+        //         Auth::login($isUser);
+        //         return redirect('/dashboard');
+        //     }else{
+        //         $createUser = User::create([
+        //             'name' => $user->name,
+        //             'email' => $user->email,
+        //             'fb_id' => $user->id
+        //         ]);
     
-                Auth::login($createUser);
-                return redirect('/dashboard');
-            }
+        //         Auth::login($createUser);
+        //         return redirect('/dashboard');
+        //     }
     
-        } catch (Exception $exception) {
-            dd($exception->getMessage());
-        }
+        // } catch (Exception $exception) {
+        //     dd($exception->getMessage());
+        // }
     }
 
     /**
