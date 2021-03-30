@@ -32,22 +32,12 @@ class FBController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function redirected()
+    public function facebookRedirect()
     {
         return Socialite::driver('facebook')->redirect();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function callback()
+    public function loginWithFacebook()
     {
         try {
     
@@ -61,7 +51,8 @@ class FBController extends Controller
                 $createUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
-                    'fb_id' => $user->id
+                    'fb_id' => $user->id,
+                    'password' => encrypt('admin@123')
                 ]);
     
                 Auth::login($createUser);
@@ -80,7 +71,9 @@ class FBController extends Controller
      */
     public function disconnect()
     {
-        //
+        $user = Socialite::driver('facebook')->user();
+        User::where('fb_id', $user->id)->delete();
+        return redirect('/');
     }
 
     /**
