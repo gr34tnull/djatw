@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'facebook' => [
+        'client_id' => '279834883714097',
+        'client_secret' => 'a31899ac21d5a3ca710a3972b235c07a',
+        'redirect' => 'https://djsaroundtheworld.com/callback',
+    ],
+
 ];

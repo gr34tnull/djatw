@@ -58,10 +58,12 @@ final class Versions
   'laravel/framework' => 'v8.34.0@81892ca110795a9c46c7e198cba7763bfd2af0bf',
   'laravel/jetstream' => 'v2.2.5@e05018b39d7f5ef7ef19af6ba8244e89c2402aab',
   'laravel/sanctum' => 'v2.9.2@504ee92651c187c58640d87f03a7941977ef0149',
+  'laravel/socialite' => 'v5.2.2@8d25d574b4f2005411c0b9cb527ef5e745c1b07d',
   'laravel/tinker' => 'v2.6.1@04ad32c1a3328081097a181875733fa51f402083',
   'league/commonmark' => '1.5.8@08fa59b8e4e34ea8a773d55139ae9ac0e0aecbaf',
   'league/flysystem' => '1.1.3@9be3b16c877d477357c015cec057548cf9b2a14a',
   'league/mime-type-detection' => '1.7.0@3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3',
+  'league/oauth1-client' => 'v1.9.0@1e7e6be2dc543bf466236fb171e5b20e1b06aee6',
   'livewire/livewire' => 'v2.4.1@b0cb782674673a67ddfd5910d2fcb5308bb32857',
   'mobiledetect/mobiledetectlib' => '2.8.37@9841e3c46f5bd0739b53aed8ac677fa712943df7',
   'monolog/monolog' => '2.2.0@1cb1cde8e8dd0f70cc0fe51354a59acad9302084',
@@ -153,7 +155,7 @@ final class Versions
   'sebastian/type' => '2.3.1@81cd61ab7bbf2de744aba0ea61fae32f721df3d2',
   'sebastian/version' => '3.0.2@c6c1022351a901512170118436c764e473f6de8c',
   'theseer/tokenizer' => '1.2.0@75a63c33a8577608444246075ea0af0d052e452a',
-  'laravel/laravel' => '1.0.0+no-version-set@',
+  'laravel/laravel' => 'dev-master@f1509401be83b37bfc97bed5b323c6593b0e0e69',
 );
 
     private function __construct()

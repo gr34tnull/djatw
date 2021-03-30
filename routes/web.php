@@ -14,8 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('start');
 });
+
+Route::resources([
+    'users' => 'App\Http\Controllers\FBController',
+]);
+
+Route::get('/redirect', 'App\Http\Controllers\FBController@redirected')->name('users.redirect');
+Route::get('/callback', 'App\Http\Controllers\FBController@callback')->name('users.callback');
+Route::get('/disconnect', 'App\Http\Controllers\FBController@disconnect')->name('users.disconnect');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -12,6 +12,26 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <style>
+            @font-face {
+                font-family: rightsyd;
+                src: url({{asset('rightsyd.otf')}});
+            }
+
+            .font-rightsyd {
+                font-family: rightsyd !important;
+            }
+
+            /* Chrome, Safari and Opera */
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+
+            .no-scrollbar {
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+            }
+        </style>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,22 +41,22 @@
             {{ $slot }}
         </div>
         <script>
-        window.fbAsyncInit = function() {
-            FB.init({
-            appId      : '279834883714097',
-            xfbml      : true,
-            version    : 'v10.0'
-            });
-            FB.AppEvents.logPageView();
-        };
+            window.fbAsyncInit = function() {
+                FB.init({
+                appId      : '279834883714097',
+                xfbml      : true,
+                version    : 'v10.0'
+                });
+                FB.AppEvents.logPageView();
+            };
 
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
         </script>
     </body>
 </html>
