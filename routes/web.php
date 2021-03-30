@@ -25,7 +25,7 @@ Route::get('auth/facebook', 'App\Http\Controllers\FBController@facebookRedirect'
 
 Route::get('auth/facebook/callback', 'App\Http\Controllers\FBController@loginWithFacebook');
 
-Route::get('/disconnect', 'App\Http\Controllers\FBController@disconnect');
+Route::get('auth/disconnect', 'App\Http\Controllers\FBController@disconnect');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
