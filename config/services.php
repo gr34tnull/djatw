@@ -33,7 +33,7 @@ return [
     'facebook' => [
         'client_id' => '196243415307074',
         'client_secret' => '6c3a3c3a8a7218a9eebab97bc7f133be',
-        'redirect' => 'djsaroundtheworld.com/auth/facebook/callback',
+        'redirect' => 'https://djsaroundtheworld.com//auth/facebook/callback',
     ],
 
 ];
