@@ -31,9 +31,9 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '1065449943963770',
-        'client_secret' => '5c99f8724505228a934d5f1455a2219a',
-        'redirect' => 'https://djsaroundtheworld.com//auth/facebook/callback',
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT_URI')
     ],
 
 ];
