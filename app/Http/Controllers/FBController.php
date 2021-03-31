@@ -37,8 +37,9 @@ class FBController extends Controller
         return Socialite::driver('facebook')->redirect();
     }
 
-    public function loginWithFacebook()
+    public function loginWithFacebook(Request $request)
     {
+        dd($request->all());
         try {
     
             $user = Socialite::driver('facebook')->user();

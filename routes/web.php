@@ -23,7 +23,7 @@ Route::resources([
 
 Route::get('auth/facebook', 'App\Http\Controllers\FBController@facebookRedirect');
 
-Route::get('auth/facebook/callback', 'App\Http\Controllers\FBController@loginWithFacebook');
+Route::post('auth/facebook/callback', 'App\Http\Controllers\FBController@loginWithFacebook');
 
 Route::get('auth/disconnect', 'App\Http\Controllers\FBController@disconnect');
 
