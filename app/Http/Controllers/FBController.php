@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
-use Socialite;
+use Laravel\Socialite\Facades\Socialite;
 use Validator;
 use Exception;
 use Auth;
@@ -40,27 +40,24 @@ class FBController extends Controller
     public function loginWithFacebook(Request $request)
     {
         try {
-    
-            $user = Socialite::driver('facebook')->userFromToken($request->code);
-            $isUser = User::where('fb_id', $user->id)->first();
-     
-            if($isUser){
-                Auth::login($isUser);
-                return redirect('/dashboard');
-            }else{
-                $createUser = User::create([
-                    'name' => $user->name,
-                    'email' => $user->email,
-                    'fb_id' => $user->id
-                ]);
-    
-                Auth::login($createUser);
-                return redirect('/dashboard');
-            }
-    
-        } catch (Exception $exception) {
-            dd($exception->getMessage());
+            $userSocial = Socialite::driver('facebook')->stateless()->user();
+        } 
+        catch (Exception $e) {
+            return redirect ('/');
         }
+        if (!$request->has('code') || $request->has('denied')) {
+            return redirect('/');
+        }
+    
+        //$userSocial =   Socialite::driver($provider)->stateless()->user();
+        $user = User::where(['fb_id' => $userSocial->getId()])->firstOrCreate([
+            'fb' => $userSocial->getId(),
+            'name' => $userSocial->getName(),
+            'email' => $userSocial->getEmail(),
+        ]);
+
+        Auth::login($user);
+        return redirect()->route('dashboard');
     }
 
     /**
