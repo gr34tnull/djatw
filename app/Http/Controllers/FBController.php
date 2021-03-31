@@ -24,6 +24,7 @@ class FBController extends Controller
         try {
     
             $user = Socialite::driver('facebook')->user();
+            dd($user->all());
             $isUser = User::where('fb_id', $user->getId())->first();
      
             if($isUser){
