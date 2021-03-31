@@ -48,14 +48,11 @@ class FBController extends Controller
         if (!$request->has('code') || $request->has('denied')) {
             return redirect('/');
         }
-    
-        //$userSocial =   Socialite::driver($provider)->stateless()->user();
         $user = User::where(['fb_id' => $userSocial->getId()])->firstOrCreate([
             'fb_id' => $userSocial->getId(),
             'name' => $userSocial->getName(),
             'email' => $userSocial->getEmail(),
         ]);
-
         Auth::login($user);
         return redirect()->route('dashboard');
     }
