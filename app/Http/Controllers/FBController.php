@@ -39,16 +39,18 @@ class FBController extends Controller
 
     public function loginWithFacebook(Request $request)
     {
-        $userSocial = Socialite::driver('facebook')->stateless()->user();
-        if (!$request->has('code') || $request->has('denied')) {
-            $user = User::where(['fb_id' => $userSocial->getId()])->firstOrCreate([
-                'fb_id' => $userSocial->getId(),
-                'name' => $userSocial->getName(),
-                'email' => $userSocial->getEmail(),
-            ]);
-            Auth::login($user);
-            return redirect()->route('dashboard');
-        }
+        $userSocial = Socialite::driver('facebook')->user();
+        dd($userSocial->all());
+
+        // if (!$request->has('code') || $request->has('denied')) {
+        //     $user = User::where(['email' => $userSocial->getEmail()])->firstOrCreate([
+        //         'fb_id' => $userSocial->getId(),
+        //         'name' => $userSocial->getName(),
+        //         'email' => $userSocial->getEmail(),
+        //     ]);
+        //     Auth::login($user);
+        //     return redirect()->route('dashboard');
+        // }
     }
 
     /**
