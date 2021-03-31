@@ -51,7 +51,7 @@ class FBController extends Controller
     
         //$userSocial =   Socialite::driver($provider)->stateless()->user();
         $user = User::where(['fb_id' => $userSocial->getId()])->firstOrCreate([
-            'fb' => $userSocial->getId(),
+            'fb_id' => $userSocial->getId(),
             'name' => $userSocial->getName(),
             'email' => $userSocial->getEmail(),
         ]);
