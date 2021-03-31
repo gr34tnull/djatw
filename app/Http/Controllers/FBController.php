@@ -37,20 +37,32 @@ class FBController extends Controller
         return Socialite::driver('facebook')->redirect();
     }
 
-    public function loginWithFacebook()
+    public function loginWithFacebook(Request $request)
     {
-        $userSocial = Socialite::driver('facebook')->user();
 
-        return $userSocial->getId();
-        // if (!$request->has('code') || $request->has('denied')) {
-        //     $user = User::where(['email' => $userSocial->getEmail()])->firstOrCreate([
-        //         'fb_id' => $userSocial->getId(),
-        //         'name' => $userSocial->getName(),
-        //         'email' => $userSocial->getEmail(),
-        //     ]);
-        //     Auth::login($user);
-        //     return redirect()->route('dashboard');
-        // }
+        try {
+    
+            $user = Socialite::driver('facebook')->user();
+            $isUser = User::where('fb_id', $user->getId())->first();
+     
+            if($isUser){
+                Auth::login($isUser);
+                return redirect('/dashboard');
+            }else{
+                $createUser = User::create([
+                    'name' => $user->getName(),
+                    'email' => $user->getEmail(),
+                    'fb_id' => $user->getId()
+                ]);
+    
+                Auth::login($createUser);
+                return redirect('/dashboard');
+            }
+    
+        } catch (Exception $exception) {
+            dd($exception->getMessage());
+        }
+
     }
 
     /**
