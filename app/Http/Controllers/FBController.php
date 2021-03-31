@@ -39,7 +39,7 @@ class FBController extends Controller
 
     public function loginWithFacebook(Request $request)
     {
-        $userSocial = Socialite::driver('facebook')->userFromToken($request->code);
+        $userSocial = Socialite::driver('facebook')->user();
         dd($userSocial->all());
 
         // if (!$request->has('code') || $request->has('denied')) {
