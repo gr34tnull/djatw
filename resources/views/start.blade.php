@@ -5,12 +5,9 @@
             <x-jet-authentication-card-logo />
             <h1 class="py-4 text-6xl font-semibold text-center text-white font-rightsyd">around the world</h1>
             <p class="pt-10 pb-4 text-xl font-extrabold text-center text-white">Sign-up and get verified to get the latest for DJs by DJs</p>
-            <form method="POST" action="{{ route('login') }}">
-            @csrf
-                <a href="{{ url('auth/facebook') }}" class="px-12 py-4 text-2xl font-extrabold text-center text-white bg-gray-800 border-2 rounded-full hover:border-yellow-600">
-                    REGISTER NOW
-                </a>
-            </form>
+            <a href="{{ url('auth/facebook') }}" class="px-12 py-4 text-2xl font-extrabold text-center text-white bg-gray-800 border-2 rounded-full hover:border-yellow-600">
+                REGISTER NOW
+            </a>
         </div>
     </div>
 </div>
