@@ -18,10 +18,10 @@ Route::get('/', function () {
 });
 
 Route::resources([
-    'users' => 'App\Http\Controllers\FBController',
+    'users' => 'App\Http\Controllers\UserController',
 ]);
 
-Route::get('auth/facebook', 'App\Http\Controllers\FBController@facebookRedirect');
+Route::get('auth/facebook', 'App\Http\Controllers\FBController@facebookRedirect')->name('login.facebook');
 
 Route::get('auth/facebook/callback', 'App\Http\Controllers\FBController@loginWithFacebook');
 

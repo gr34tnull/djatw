@@ -4,13 +4,13 @@
         <div class="flex flex-col items-center justify-center text-center">
             <x-jet-authentication-card-logo />
             <h1 class="py-4 text-6xl font-semibold text-center text-white font-rightsyd">around the world</h1>
-            <p class="pt-10 pb-4 text-xl font-extrabold text-center text-white">Sign-up and get verified to get the latest for DJs by DJs</p>
-            <form method="POST" action="{{ route('login') }}">
-            @csrf
-                <a href="{{ url('auth/facebook') }}" class="px-12 py-4 text-2xl font-extrabold text-center text-white bg-gray-800 border-2 rounded-full hover:border-yellow-600">
+            <p class="pt-10 pb-4 text-xl font-extrabold text-center text-white">Sign-up and get verified to get the latest for DJs by DJs using your facebook account.</p>
+            <div class="flex flex-col my-6">
+                <a href="{{ route('login.facebook') }}" class="px-12 py-4 text-2xl font-extrabold text-center text-white bg-gray-800 border-2 rounded-full hover:border-yellow-600">
                     REGISTER NOW
                 </a>
-            </form>
+                <a href="{{ route('login')}}" class="pt-2 text-sm font-extrabold text-yellow-300">LOGIN HERE</a>
+            </div>
         </div>
     </div>
 </div>
