@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'SUPER ADMIN',
-            'email' => 'gr34tnull@gmail.com',
+            'email' => 'jkpjulian@icreadev.live',
             'password' => Hash::make('Gr34t@July'),
             'email_verified_at' => date("Y-m-d"),
             'admin' => true,
