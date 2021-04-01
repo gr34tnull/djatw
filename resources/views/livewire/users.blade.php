@@ -86,6 +86,9 @@
                                             <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                                 Role
                                             </th>
+                                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                Delete
+                                            </th>
                                         </tr>
                                     </thead>
     
@@ -130,6 +133,14 @@
     
                                             <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                                 {{$user->admin == 1 ? 'Admin' : 'User'}}
+                                            </td>
+
+                                            <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                                <form method="POST" action="{{route('users.destroy',$user->id)}}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="text-red-900"><i class="text-lg fas fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
 

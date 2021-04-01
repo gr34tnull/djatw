@@ -52,7 +52,12 @@ class FBController extends Controller
      */
     public function disconnect()
     {
-        $user = Socialite::driver('facebook')->user();
+        try {
+            $user = Socialite::driver('facebook')->user();
+        } catch (Exception $exception) {
+            return redirect('/');
+        }
+        
         User::where('fb_id', $user->id)->delete();
         return redirect('/');
     }

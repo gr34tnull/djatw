@@ -1,9 +1,11 @@
 <x-app-layout>
-    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
-        <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden">
-        </div>
-        <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-800 lg:translate-x-0 lg:static lg:inset-0">
 
+<div>
+    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
+        <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed inset-0 z-20 transition-opacity bg-black opacity-50 lg:hidden"></div>
+    
+        <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-800 lg:translate-x-0 lg:static lg:inset-0">
+    
             <nav class="mt-10">
                 <a class="flex items-center px-6 py-2 mt-4 text-gray-100 bg-gray-700 bg-opacity-25" href="{{route('users.index')}}">
                     <i class="fas fa-user"></i>
@@ -41,7 +43,7 @@
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 no-scrollbar">
                 <div class="container px-6 py-8 mx-auto">
                     <h3 class="text-3xl font-medium text-gray-700">Users</h3>
-
+    
                     <div class="mt-4">
                         <div class="flex flex-wrap -mx-6">
                             <div class="w-full px-6 xl:w-1/2">
@@ -52,7 +54,7 @@
                                     </div>
                                 </div>
                             </div>
-
+    
                             <div class="w-full px-6 mt-6 xl:w-1/2 xl:mt-0">
                                 <div class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">
                                     <div class="mx-5">
@@ -63,7 +65,7 @@
                             </div>
                         </div>
                     </div>
-
+    
                     <div class="flex flex-col mt-8">
                         <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                             <div
@@ -86,9 +88,12 @@
                                             <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                                 Role
                                             </th>
+                                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                Delete
+                                            </th>
                                         </tr>
                                     </thead>
-
+    
                                     <tbody class="bg-white">
                                     @foreach($users as $user)
                                         <tr>
@@ -116,7 +121,7 @@
                                             <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                                 <a class="text-blue-800" href="{{$user->fb_profile}}" target="_blank"><i class="text-xl fab fa-facebook-square"></i></a>
                                             </td>
-
+    
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                 <form method="POST" action="{{ route('users.update',$user->id) }}">
                                                 @csrf
@@ -127,9 +132,17 @@
                                                     </button>
                                                 </form>
                                             </td>
-
+    
                                             <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
                                                 {{$user->admin == 1 ? 'Admin' : 'User'}}
+                                            </td>
+
+                                            <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                                <form method="POST" action="{{route('users.destroy',$user->id)}}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="text-red-900"><i class="text-lg fas fa-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
 
@@ -143,4 +156,6 @@
             </main>
         </div>
     </div>
+</div>
+
 </x-app-layout>

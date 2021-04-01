@@ -14,6 +14,7 @@ $DJtype = array('CLUB DJ','RADIO DJ','VIDEO DJ','MUSIC ENTHUSIAST');
             To complete your application please complete the fields below with the correct information. Your application will be approved once it is verified that you are a DJ. You will receive an email within 24 hours if your account has been activated.
             </small>
         </div>
+        @if(is_null(auth()->user()->fb_profile) && is_null(auth()->user()->affiliation) && is_null(auth()->user()->country) )
         <div class="p-4 bg-white rounded-xl">
         <form method="POST" action="{{ route('users.update',auth()->user()->id) }}">
         @csrf
@@ -47,5 +48,6 @@ $DJtype = array('CLUB DJ','RADIO DJ','VIDEO DJ','MUSIC ENTHUSIAST');
             </div>
         </form>
         </div>
+        @endif
     </div>
 </div>
