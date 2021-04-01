@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Hash;
 use Validator;
 use Exception;
 use Auth;
@@ -24,8 +25,6 @@ class FBController extends Controller
         try {
     
             $user = Socialite::driver('facebook')->user();
-
-            dd($user);
             
             $isUser = User::where('fb_id', $user->getId())->first();
      
@@ -36,7 +35,8 @@ class FBController extends Controller
                 $createUser = User::create([
                     'name' => $user->getName(),
                     'email' => $user->getEmail(),
-                    'fb_id' => $user->getId()
+                    'fb_id' => $user->getId(),
+                    'password' => Hash::make('DJSatw2021'),
                 ]);
     
                 Auth::login($createUser);

@@ -1,7 +1,10 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <div class="flex flex-col items-center text-center">
+                <x-jet-authentication-card-logo />
+                <h1 class="py-2 text-6xl font-semibold text-center text-white font-rightsyd">around the world</h1>
+            </div>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
