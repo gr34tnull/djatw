@@ -29,11 +29,20 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'f1509401be83b37bfc97bed5b323c6593b0e0e69',
+    'reference' => 'c0a40919e98fb6fb4e2010385955a0767358a81c',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
   array (
+    'algolia/algoliasearch-client-php' => 
+    array (
+      'pretty_version' => '2.7.3',
+      'version' => '2.7.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '142a382e4649db0cb64d9eb8893872f1a4ba8dd3',
+    ),
     'asm89/stack-cors' => 
     array (
       'pretty_version' => 'v2.0.3',
@@ -60,6 +69,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
+    ),
+    'colinodell/json5' => 
+    array (
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'dd7f788c5de3837d1483a216dc9b30e5d9c8c00a',
     ),
     'composer/package-versions-deprecated' => 
     array (
@@ -558,7 +576,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'f1509401be83b37bfc97bed5b323c6593b0e0e69',
+      'reference' => 'c0a40919e98fb6fb4e2010385955a0767358a81c',
     ),
     'laravel/sail' => 
     array (
@@ -577,6 +595,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '504ee92651c187c58640d87f03a7941977ef0149',
+    ),
+    'laravel/scout' => 
+    array (
+      'pretty_version' => 'v8.6.0',
+      'version' => '8.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '54070f7b68fed15f25e61e68884c4110496b8aa1',
     ),
     'laravel/socialite' => 
     array (
@@ -696,6 +723,33 @@ private static $installed = array (
       array (
       ),
       'reference' => '2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4',
+    ),
+    'nette/caching' => 
+    array (
+      'pretty_version' => 'v3.1.1',
+      'version' => '3.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3e771c589dee414724be473c24ad16dae50c1960',
+    ),
+    'nette/finder' => 
+    array (
+      'pretty_version' => 'v2.5.2',
+      'version' => '2.5.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4ad2c298eb8c687dd0e74ae84206a4186eeaed50',
+    ),
+    'nette/utils' => 
+    array (
+      'pretty_version' => 'v3.2.2',
+      'version' => '3.2.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '967cfc4f9a1acd5f1058d76715a424c53343c20c',
     ),
     'nikic/php-parser' => 
     array (
@@ -857,6 +911,24 @@ private static $installed = array (
       ),
       'reference' => 'c73c6737305e779771147af66c96ca6a7ed8a741',
     ),
+    'pragmarx/coollection' => 
+    array (
+      'pretty_version' => 'v0.8.0',
+      'version' => '0.8.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '75e4186c3e17acea4dbbe6f65ec3c79f736061cb',
+    ),
+    'pragmarx/countries' => 
+    array (
+      'pretty_version' => 'v0.7.2',
+      'version' => '0.7.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '49b71b520f4eae8a252ef754677fb0747f24dc7d',
+    ),
     'pragmarx/google2fa' => 
     array (
       'pretty_version' => '8.0.0',
@@ -865,6 +937,33 @@ private static $installed = array (
       array (
       ),
       'reference' => '26c4c5cf30a2844ba121760fd7301f8ad240100b',
+    ),
+    'pragmarx/ia-arr' => 
+    array (
+      'pretty_version' => 'v7.3.1',
+      'version' => '7.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e0107e68bbce8736f6e19c796a5511b741ced227',
+    ),
+    'pragmarx/ia-collection' => 
+    array (
+      'pretty_version' => 'v7.3.0',
+      'version' => '7.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '97a00312ffc190cfcac3ae919ed2e122deb685f5',
+    ),
+    'pragmarx/ia-str' => 
+    array (
+      'pretty_version' => 'v7.3.0',
+      'version' => '7.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6f0c981d3b16cd9715366a6d5f452df0654cbcc4',
     ),
     'psr/container' => 
     array (

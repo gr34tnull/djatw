@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
@@ -17,6 +18,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +27,15 @@ class User extends Authenticatable
      */
     protected $guarded = [];
     protected $table = 'users';
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // Customize the data array...
+
+        return $array;
+    }
 
     /**
      * The attributes that should be hidden for arrays.

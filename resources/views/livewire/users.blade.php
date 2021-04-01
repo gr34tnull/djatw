@@ -13,6 +13,8 @@
         </div>
         <div class="flex flex-col flex-1 overflow-hidden">
             <header class="flex items-center justify-between px-6 py-4 bg-white border-b-4 border-yellow-300">
+                <form method="post" action="{{route('users.search')}}">
+                    @csrf
                     <div class="flex items-center">
                         <button type="submit" @click="sidebarOpen = true" class="text-gray-500 focus:outline-none lg:hidden">
                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,6 +36,7 @@
                             <input name="search" class="w-32 pl-10 pr-4 rounded-md form-input sm:w-64 focus:border-indigo-600" type="text" placeholder="Search">
                         </div>
                     </div>
+                </form>
             </header>
             <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 no-scrollbar">
                 <div class="container px-6 py-8 mx-auto">
@@ -72,6 +75,12 @@
                                                 Name
                                             </th>
                                             <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                DJ Type
+                                            </th>
+                                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                                FB
+                                            </th>
+                                            <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                                                 Status
                                             </th>
                                             <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
@@ -98,15 +107,32 @@
                                                     </div>
                                                 </div>
                                             </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-900">{{$user->type}}</div>
+                                                <div class="text-sm text-gray-500">{{$user->country}}</div>
+                                            </td>
+
+                                            <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                                                <a class="text-blue-800" href="{{$user->fb_profile}}" target="_blank"><i class="text-xl fab fa-facebook-square"></i></a>
+                                            </td>
     
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                                                <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full {{$user->whereNotNull('email_verified_at') ? 'text-green-800 bg-green-100' : 'text-red-800 bg-red-100'}}">{{$user->whereNotNull('email_verified_at') ? 'Verified' : 'Not Verified'}}</span>
+                                                <form method="POST" action="{{ route('users.update',$user->id) }}">
+                                                @csrf
+                                                @method('patch')
+                                                    <input type="hidden" name="email_verified_at" value="{{$user->email_verified_at}}">
+                                                    <button type="submit">
+                                                        <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full {{is_null($user->email_verified_at) ? 'text-red-800 bg-red-100' : 'text-green-800 bg-green-100'}}">{{is_null($user->email_verified_at) ? 'Not Verified' : 'Verified'}}</span>
+                                                    </button>
+                                                </form>
                                             </td>
     
                                             <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                                                {{$user->where('admin',true) ? 'Admin' : 'User'}}
+                                                {{$user->admin == 1 ? 'Admin' : 'User'}}
                                             </td>
                                         </tr>
+
                                     @endforeach
                                     </tbody>
                                 </table>

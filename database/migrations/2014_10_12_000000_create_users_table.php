@@ -16,7 +16,6 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('fb_id')->unique()->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
@@ -24,6 +23,11 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
             $table->boolean('admin')->default(false);
+            $table->string('fb_id')->unique()->nullable();
+            $table->text('fb_profile')->nullable();
+            $table->string('type')->default('CLUB DJ');
+            $table->string('country')->nullable();
+            $table->string('affiliation')->nullable();
             $table->timestamps();
         });
     }

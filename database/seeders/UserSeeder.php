@@ -30,5 +30,13 @@ class UserSeeder extends Seeder
             'email_verified_at' => date("Y-m-d"),
             'admin' => true,
         ]);
+
+        User::create([
+            'name' => 'グレートヌル ジュリアン',
+            'email' => 'gr34tnull@gmail.com',
+            'fb_id' => '1071837929992909',
+            'password' => Hash::make('Zxasqw12'),
+            'admin' => false,
+        ]);
     }
 }

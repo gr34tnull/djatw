@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use PragmaRX\Countries\Package\Countries;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,10 @@ Route::get('/', function () {
 Route::resources([
     'users' => 'App\Http\Controllers\UserController',
 ]);
+
+Route::prefix('search')->group(function () {
+    Route::post('users', 'App\Http\Controllers\UserController@search')->name('users.search');
+});
 
 Route::get('auth/facebook', 'App\Http\Controllers\FBController@facebookRedirect')->name('login.facebook');
 
