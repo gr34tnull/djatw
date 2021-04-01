@@ -11,8 +11,8 @@ class Users extends Component
 
     public function mount()
     {
-        $this->users = User::all();
-        // $this->users = User::where('admin',false)->get();
+        // $this->users = User::all();
+        $this->users = User::where('admin',false)->get();
     }
 
     public function render()
