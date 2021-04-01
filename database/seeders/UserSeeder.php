@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'ADMIN',
-            'email' => 'admin@icreate.live',
+            'email' => 'admin@thinkbigcreatives.com',
             'password' => Hash::make('Zxasqw12'),
             'email_verified_at' => date("Y-m-d"),
             'admin' => true,
