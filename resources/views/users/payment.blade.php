@@ -1,3 +1,9 @@
+@if(auth()->guest())
+<x-guest-layout>
+    @include('payments.pay')
+</x-guest-layout>
+@else
 <x-app-layout>
     @include('payments.pay')
 </x-app-layout>
+@endif
