@@ -32,6 +32,14 @@ Route::get('auth/facebook/callback', 'App\Http\Controllers\FBController@loginWit
 
 Route::get('auth/disconnect', 'App\Http\Controllers\FBController@disconnect');
 
+Route::get('cdjvpayment/{id}', 'App\Http\Controllers\UserController@payment');
+Route::get('payment', 'App\Http\Controllers\UserController@publicPayment');
+Route::get('success', 'App\Http\Controllers\UserController@success');
+
+Route::get('/test', function () {
+    return view('users.payment');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

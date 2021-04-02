@@ -117,7 +117,7 @@
                                             </td>
 
                                             <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                                                <a class="text-blue-800" href="{{$user->fb_profile}}" target="_blank"><i class="text-xl fab fa-facebook-square"></i></a>
+                                                <a class="text-blue-800 focus:outline-none" href="{{$user->fb_profile}}" target="_blank"><i class="text-xl fab fa-facebook-square"></i></a>
                                             </td>
     
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -125,7 +125,7 @@
                                                 @csrf
                                                 @method('patch')
                                                     <input type="hidden" name="email_verified_at" value="{{$user->email_verified_at}}">
-                                                    <button type="submit">
+                                                    <button class="focus:outline-none" type="submit">
                                                         <span class="inline-flex px-2 text-xs font-semibold leading-5 rounded-full {{is_null($user->email_verified_at) ? 'text-red-800 bg-red-100' : 'text-green-800 bg-green-100'}}">{{is_null($user->email_verified_at) ? 'Not Verified' : 'Verified'}}</span>
                                                     </button>
                                                 </form>
@@ -139,7 +139,7 @@
                                                 <form method="POST" action="{{route('users.destroy',$user->id)}}">
                                                     @csrf
                                                     @method('delete')
-                                                    <button class="text-red-900"><i class="text-lg fas fa-trash"></i></button>
+                                                    <button class="text-red-900 focus:outline-none"><i class="text-lg fas fa-trash"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

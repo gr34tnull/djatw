@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use PragmaRX\Countries\Package\Countries;
+use App\Mail\VerifiedDJ;
+use App\Mail\RejectedDJ;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -32,6 +36,34 @@ class UserController extends Controller
     {
         $users = User::search($request->get('search'))->where('admin',0)->get();
         return view('users.index',compact('users'));
+    }
+
+    public function publicPayment()
+    {
+        return view('users.payment');
+    }
+
+    public function payment($id)
+    {
+        if(auth()->check())
+        {
+            if(auth()->user()->admin == 0 && !is_null(auth()->user()->email_verified_at))
+            {
+                $user = auth()->user();
+                return view('users.payment',compact('user'));
+            } else {
+                return redirect('/dashboard');
+            }
+        } else {
+            $user = User::findorFail($id);
+            Auth::login($user);
+            return redirect('/cdjvpayment/'.$user->id);
+        }
+    }
+
+    public function success()
+    {
+        return view('payments.success');
     }
 
     /**
@@ -88,12 +120,18 @@ class UserController extends Controller
     {
         if($request->has('email_verified_at'))
         {
-            $user->email_verified_at = is_null($request->email_verified_at) ? date("Y-m-d") : null;
+            $user->email_verified_at = is_null($request->email_verified_at) ? $this->SendVerification($user) : null;
             $user->save();
         } else {
             $user->fill($request->all())->save();
         }
         return redirect('/dashboard');
+    }
+
+    public function SendVerification(User $user)
+    {
+        Mail::to($user->email)->send(new VerifiedDJ($user->id));
+        return date("Y-m-d");
     }
 
     /**
@@ -104,6 +142,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        Mail::to($user->email)->send(new RejectedDJ());
         $user->delete();
         return redirect('/users');
     }
