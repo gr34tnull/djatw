@@ -1,11 +1,13 @@
 <x-guest-layout>
-<div class="flex items-center justify-center w-screen h-screen bg-contain" style="background-image: url({{asset('bg.png')}})">
-    <div class="flex flex-col items-center justify-center w-64 h-64 p-4 bg-white rounded-xl">
-        <h1 class="text-sm font-extrabold text-center">3 Months Subscription</h1>
+<div class="flex flex-col items-center justify-center w-screen h-screen p-20 bg-cover" style="background-image: url({{asset('bg.png')}})">
+    <div class="flex flex-col items-center justify-center w-full p-6 bg-white rounded-xl">
+        <h1 class="text-xl font-extrabold text-center">3 Months Subscription</h1>
         <h1 class="pb-4 text-sm text-center">500 Download Credits for $100</h1>
-        <div id="smart-button-container">
-            <div style="text-align: center;">
-                <div id="paypal-button-container"></div>
+        <div class="w-full h-full p-10">
+            <div class="w-full absoulte" id="smart-button-container">
+                <div style="text-align: center;">
+                    <div id="paypal-button-container"></div>
+                </div>
             </div>
         </div>
         <p class="text-xs text-center text-gray-900">This is not an automatic subscription payment. Payment will not be deducted from your account without your confirmation.</p>
