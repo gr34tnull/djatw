@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('start');
 });
 
-Route::get('/', function () {
+Route::get('/paynow', function () {
     return view('paynow');
 });
 
