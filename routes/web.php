@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('start');
 });
 
+Route::get('/', function () {
+    return view('paynow');
+});
+
 Route::resources([
     'users' => 'App\Http\Controllers\UserController',
 ]);
